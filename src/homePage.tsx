@@ -1,19 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { Button, LogBox, StyleSheet, Text, View, TextInput, Image, Dimensions } from 'react-native';
-import logo from '../assets/reactNativeLogo.png'
+import { Text, Image, View, TextInput, StyleSheet, Dimensions, Button } from 'react-native';
+import logo from '../assets/reactNativeLogo.png';
+import { useNavigation } from '@react-navigation/native';
+
 
 const width = Dimensions.get('screen').width;
 
 export default function homePage() {
-    return (
 
-        <View style={{backgroundColor: "white", flex: 1}}>
+    const navigation = useNavigation();
+
+    return (
+        <View style={{ backgroundColor: "white", flex: 1 }}>
             <Image source={logo} style={style.logo}></Image>
             <Text style={style.tittleLogo} >Teste de App</Text>
             <View style={style.container}>
 
                 <Text style={style.questionData}>Data de Hoje</Text>
                 <View style={style.data}>
+
                     <Text>Data: </Text>
                     <TextInput style={style.inputData} keyboardType={'numeric'}></TextInput>
                 </View>
@@ -26,15 +30,19 @@ export default function homePage() {
                     <TextInput style={style.inputData} keyboardType={'numeric'}></TextInput>
                 </View>
 
-                <Button title='Confirmar'></Button>
+                <View style={{ paddingVertical: 30 }}>
+                    <Button title='Confirmar' onPress={() => navigation.navigate('Cadastro')}></Button>
+                </View>
+                <Text style={style.rodape}>Desenvolvido por Leandro Carlos ®</Text>
+
             </View>
-        </View>
 
-
+        </View >
     )
-
-
 }
+
+// Estilização da página
+
 const style = StyleSheet.create({
 
     container: {
@@ -96,11 +104,13 @@ const style = StyleSheet.create({
         backgroundColor: "#F5F5F5",
         width: "80%",
         height: 30,
-        color:  "black",
+        color: "black",
         paddingLeft: 15,
         fontSize: 25
-    },
-
-
-
+    }
+    , rodape: {
+        position: 'absolute',
+        bottom: 0,
+        color: "#959898"
+    }
 });

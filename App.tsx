@@ -1,9 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import homePage from './src/homePage';
+import * as React from 'react';
+import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Routes from './src/Routes'
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
+
   return (
-    homePage()
+    <NavigationContainer>
+      <Routes></Routes>
+    </NavigationContainer>
   );
 }
